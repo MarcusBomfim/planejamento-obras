@@ -1,8 +1,9 @@
 # Planejamento e Controle de Obras
 
-[![CI](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/ci.yml/badge.svg)](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/ci.yml)
-[![Ponta a ponta](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/e2e.yml/badge.svg)](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/e2e.yml)
-[![Entrega](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/entrega.yml/badge.svg)](https://github.com/MarcusBomfim/Projeto-C--obras/actions/workflows/entrega.yml)
+[![CI](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/ci.yml/badge.svg)](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/ci.yml)
+[![Ponta a ponta](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/e2e.yml/badge.svg)](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/e2e.yml)
+[![Entrega](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/entrega.yml/badge.svg)](https://github.com/MarcusBomfim/planejamento-obras/actions/workflows/entrega.yml)
+[![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)](LICENSE)
 
 Planejamento e controle de obra como o engenheiro de planejamento faz: rede de precedências e caminho crítico, orçamento com composições de custo e BDI, o cronograma físico-financeiro que junta os dois — e a obra medida mês a mês contra o plano aprovado, com boletim de medição, valor agregado e um painel das obras que se atualiza em segundo plano a cada medição. Pela API ou no navegador, com o Gantt e a curva S; em contêineres, com o rastro de cada medição do pedido HTTP ao painel.
 
@@ -258,7 +259,7 @@ Se outra pessoa alterou o cronograma no meio, a resposta é 412 — e todo erro 
 
 ```json
 {
-  "type": "https://github.com/MarcusBomfim/Projeto-C--obras/blob/main/docs/api/problemas.md#versao-desatualizada",
+  "type": "https://github.com/MarcusBomfim/planejamento-obras/blob/main/docs/api/problemas.md#versao-desatualizada",
   "title": "A versão informada não é mais a atual.",
   "status": 412,
   "detail": "O cronograma 0199e3b4-… mudou desde a versão 1: está na versão 2. Leia de novo e refaça a alteração.",
@@ -636,3 +637,7 @@ docker/                                         o nginx do front-end e os papéi
 Dockerfile, compose.yaml                        as quatro imagens, e a pilha inteira em contêineres
 .github/workflows/                              CI, ponta a ponta e entrega contínua
 ```
+
+## Licença
+
+[MIT](LICENSE): use, copie, modifique e distribua à vontade, mantendo o aviso de copyright.

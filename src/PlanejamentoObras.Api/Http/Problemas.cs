@@ -16,7 +16,7 @@ internal sealed record Problema(int Status, string Tipo, string Titulo)
 /// </summary>
 internal static class Problemas
 {
-    private const string Documentacao = "https://github.com/MarcusBomfim/Projeto-C--obras/blob/main/docs/api/problemas.md#";
+    private const string Documentacao = "https://github.com/MarcusBomfim/planejamento-obras/blob/main/docs/api/problemas.md#";
 
     public static readonly Problema PedidoInvalido = new(400, Documentacao + "pedido-invalido", "O pedido não está no formato esperado.");
 

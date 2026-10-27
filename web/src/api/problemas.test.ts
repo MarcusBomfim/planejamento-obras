@@ -5,7 +5,7 @@ describe('o problema de uma consulta', () => {
   test('vem da API em ProblemDetails, com título e detalhe prontos', () => {
     expect(
       comoProblema({
-        type: 'https://github.com/MarcusBomfim/Projeto-C--obras/blob/main/docs/api/problemas.md#nao-encontrado',
+        type: 'https://github.com/MarcusBomfim/planejamento-obras/blob/main/docs/api/problemas.md#nao-encontrado',
         title: 'O recurso não existe.',
         status: 404,
         detail: 'Não existe o acompanhamento 0199.',

@@ -4,7 +4,7 @@ Todo erro da API sai em [ProblemDetails](https://www.rfc-editor.org/rfc/rfc9457)
 
 ```json
 {
-  "type": "https://github.com/MarcusBomfim/Projeto-C--obras/blob/main/docs/api/problemas.md#versao-desatualizada",
+  "type": "https://github.com/MarcusBomfim/planejamento-obras/blob/main/docs/api/problemas.md#versao-desatualizada",
   "title": "A versão informada não é mais a atual.",
   "status": 412,
   "detail": "O cronograma 0199… mudou desde a versão 1: está na versão 2. Leia de novo e refaça a alteração.",
