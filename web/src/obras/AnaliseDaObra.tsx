@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Esquemas } from '../api/cliente';
 import { formatarIndice, formatarMeses, formatarMoeda } from '../comum/formatacao';
+import { estiloDaRegua } from '../comum/regua';
 import { situacaoDoIndice } from '../comum/situacao';
 import { CurvaS } from './CurvaS';
 import estilos from './AnaliseDaObra.module.css';
@@ -26,12 +27,14 @@ export function AnaliseDaObra({ analise }: { readonly analise: Analise }) {
         <Indicador
           nome="IDP — desempenho de prazo"
           classe={estilos[situacaoDoIndice(obra.indiceDeDesempenhoDePrazo)]}
+          indice={obra.indiceDeDesempenhoDePrazo}
         >
           {formatarIndice(obra.indiceDeDesempenhoDePrazo)}
         </Indicador>
         <Indicador
           nome="IDC — desempenho de custo"
           classe={estilos[situacaoDoIndice(obra.indiceDeDesempenhoDeCusto)]}
+          indice={obra.indiceDeDesempenhoDeCusto}
         >
           {formatarIndice(obra.indiceDeDesempenhoDeCusto)}
         </Indicador>
@@ -114,17 +117,25 @@ export function AnaliseDaObra({ analise }: { readonly analise: Analise }) {
   );
 }
 
+/** Um indicador; o índice de desempenho, quando há, ganha a régua embaixo do número. */
 function Indicador({
   nome,
   classe,
+  indice,
   children,
 }: {
   readonly nome: string;
   readonly classe?: string | undefined;
+  readonly indice?: number | null | undefined;
   readonly children: ReactNode;
 }) {
+  const comRegua = indice !== undefined;
+
   return (
-    <div className={estilos.indicador}>
+    <div
+      className={comRegua ? `regua ${estilos.indicador ?? ''} ${estilos.indice ?? ''}` : estilos.indicador}
+      style={comRegua ? estiloDaRegua(indice) : undefined}
+    >
       <dt>{nome}</dt>
       <dd className={classe}>{children}</dd>
     </div>

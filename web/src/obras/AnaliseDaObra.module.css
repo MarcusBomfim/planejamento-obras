@@ -3,37 +3,78 @@
   gap: 1.5rem;
 }
 
+/*
+ * Os indicadores em duas fileiras: os índices e o prazo em cima, em quatro;
+ * os valores embaixo, em cinco. Na tela estreita, quantos couberem.
+ */
 .indicadores {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));
+  grid-template-columns: repeat(20, minmax(0, 1fr));
   gap: 0.75rem;
   margin: 0;
 }
 
+/* Cada indicador ocupa duas linhas da grade, o nome e o valor: o nome que quebra em duas não desalinha os valores ao lado. */
 .indicador {
+  display: grid;
+  grid-row: span 2;
+  grid-column: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0.3rem;
   padding: 0.9rem 1rem;
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   background: var(--superficie);
+  box-shadow: var(--sombra);
+}
+
+.indicador:nth-child(-n + 4) {
+  grid-column: span 5;
+}
+
+@media (width < 80rem) {
+  .indicadores {
+    grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr));
+  }
+
+  .indicador,
+  .indicador:nth-child(-n + 4) {
+    grid-column: auto;
+  }
 }
 
 .indicador dt {
   color: var(--texto-suave);
-  font-size: 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .indicador dd {
-  margin: 0.15rem 0 0;
-  font-size: 1.3rem;
+  margin: 0;
+  font-size: 1.2rem;
   font-variant-numeric: tabular-nums;
-  font-weight: 650;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Os dois índices de desempenho, na letra dos números e maiores, com a régua. */
+.indice dd {
+  font-family: var(--fonte-mono);
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .indicador small {
   display: block;
+  margin-top: 0.15rem;
   color: var(--texto-suave);
-  font-size: 0.8rem;
+  font-family: var(--fonte);
+  font-size: 0.78rem;
   font-weight: 400;
+  letter-spacing: normal;
 }
 
 .EmDia {
@@ -50,7 +91,7 @@
 
 .etapas h2 {
   margin: 0 0 0.75rem;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
 }
 
 .rolagem {
@@ -58,11 +99,28 @@
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   background: var(--superficie);
+  box-shadow: var(--sombra);
+}
+
+.rolagem table {
+  font-size: 0.9rem;
+}
+
+.rolagem tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+/* A etapa como o título do seu grupo de itens, na faixa clara da planilha. */
+.etapa th,
+.etapa td {
+  background: var(--superficie-2);
+  font-weight: 600;
 }
 
 .etapa th,
-.etapa td {
-  font-weight: 650;
+.item th {
+  font-family: var(--fonte-mono);
+  font-size: 0.82rem;
 }
 
 .item th,

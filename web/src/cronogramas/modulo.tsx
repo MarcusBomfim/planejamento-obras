@@ -7,5 +7,5 @@ export const modulo: Modulo = {
     { path: 'cronogramas', element: <TelaDosCronogramas /> },
     { path: 'cronogramas/:id', element: <TelaDoCronograma /> },
   ],
-  menu: { rotulo: 'Cronogramas', caminho: '/cronogramas', ordem: 2 },
+  menu: { rotulo: 'Cronogramas', caminho: '/cronogramas', icone: 'cronogramas', ordem: 2 },
 };

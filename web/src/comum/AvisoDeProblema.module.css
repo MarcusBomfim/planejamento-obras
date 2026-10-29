@@ -1,7 +1,9 @@
 .aviso {
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--critica);
-  border-radius: var(--raio);
+  margin: 0 0 1rem;
+  padding: 0.9rem 1.15rem 0.9rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--critica) 40%, transparent);
+  border-left: 4px solid var(--critica);
+  border-radius: var(--raio-pequeno);
   background: var(--critica-fundo);
 }
 

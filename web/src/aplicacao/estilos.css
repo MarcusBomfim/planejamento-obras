@@ -2,65 +2,94 @@
  * As cores e medidas da aplicação, num lugar só. Cada componente tem o seu
  * arquivo .module.css e usa estas variáveis; o tema escuro troca só elas.
  *
- * A situação da obra tem cor, mas nunca só cor: o selo diz a situação por
- * escrito, e os gráficos têm a tabela dos números ao lado.
+ * A cara de uma ferramenta de engenharia: o menu escuro, o âmbar das placas
+ * de obra como única cor de destaque, a IBM Plex Sans no texto e a Plex
+ * Mono nos códigos e nos índices, cantos retos e linhas finas, como numa
+ * prancha. A situação da obra tem cor, mas nunca só cor: o selo diz a
+ * situação por escrito, e os gráficos têm a tabela dos números ao lado.
  */
 :root {
   color-scheme: light dark;
 
-  --fundo: #f4f6f8;
+  --fundo: #f3f5f8;
   --superficie: #ffffff;
-  --borda: #e1e5ea;
-  --borda-forte: #c4cbd4;
-  --texto: #18212b;
-  --texto-suave: #586473;
-  --destaque: #1d5fbf;
-  --destaque-fundo: #e6effb;
+  --superficie-2: #f8fafc;
+  --borda: #e2e8f0;
+  --borda-forte: #cbd5e1;
+  --texto: #0f172a;
+  --texto-suave: #4f5d73;
+  --destaque: #b45309;
+  --destaque-forte: #92400e;
+  --destaque-fundo: #fef3c7;
+  --acao: #f59e0b;
+  --acao-forte: #d97706;
+  --acao-texto: #111827;
+  --foco: #d97706;
 
-  --em-dia: #17703f;
-  --em-dia-fundo: #e2f3e9;
-  --atencao: #8a5300;
-  --atencao-fundo: #fcf0d5;
-  --critica: #b3261e;
-  --critica-fundo: #fce8e6;
-  --sem-medicao: #586473;
-  --sem-medicao-fundo: #eceff3;
+  --lateral: #0f172a;
+  --lateral-2: #1e293b;
+  --lateral-borda: #273449;
+  --lateral-texto: #cbd5e1;
+  --lateral-suave: #8b9ab0;
 
-  --planejado: #6b7684;
-  --agregado: #1d5fbf;
-  --real: #c2410c;
+  --em-dia: #15803d;
+  --em-dia-fundo: #dcfce7;
+  --atencao: #a16207;
+  --atencao-fundo: #fef9c3;
+  --critica: #b91c1c;
+  --critica-fundo: #fee2e2;
+  --sem-medicao: #4f5d73;
+  --sem-medicao-fundo: #eef2f6;
 
-  --raio: 10px;
-  --sombra: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 10%);
-  --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --fonte-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+  --planejado: #64748b;
+  --agregado: #2563eb;
+  --real: #ea580c;
+  --com-folga: #2563eb;
+
+  --raio: 8px;
+  --raio-pequeno: 6px;
+  --sombra: 0 1px 2px rgb(15 23 42 / 6%);
+  --sombra-elevada: 0 8px 24px rgb(15 23 42 / 10%);
+  --fonte:
+    'IBM Plex Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --fonte-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fundo: #0e1319;
-    --superficie: #161d25;
-    --borda: #263140;
-    --borda-forte: #3a4757;
-    --texto: #e6ebf1;
-    --texto-suave: #9aa7b6;
-    --destaque: #7fb0ff;
-    --destaque-fundo: #1b2a40;
+    --fundo: #0b1120;
+    --superficie: #111a2e;
+    --superficie-2: #0e1628;
+    --borda: #1f2a40;
+    --borda-forte: #33415c;
+    --texto: #e5e9f0;
+    --texto-suave: #9aa6ba;
+    --destaque: #fbbf24;
+    --destaque-forte: #fcd34d;
+    --destaque-fundo: #2a2210;
+    --foco: #fbbf24;
 
-    --em-dia: #6fd49a;
-    --em-dia-fundo: #15301f;
-    --atencao: #f4c15d;
-    --atencao-fundo: #3a2c0d;
-    --critica: #ff8a80;
-    --critica-fundo: #3d1714;
-    --sem-medicao: #9aa7b6;
-    --sem-medicao-fundo: #222b36;
+    --lateral: #070c18;
+    --lateral-2: #131c30;
+    --lateral-borda: #1f2a40;
 
-    --planejado: #8d99a8;
-    --agregado: #7fb0ff;
-    --real: #ff9b5c;
+    --em-dia: #4ade80;
+    --em-dia-fundo: #0f2a1a;
+    --atencao: #facc15;
+    --atencao-fundo: #2c2608;
+    --critica: #f87171;
+    --critica-fundo: #3a1414;
+    --sem-medicao: #9aa6ba;
+    --sem-medicao-fundo: #1a2438;
+
+    --planejado: #94a3b8;
+    --agregado: #60a5fa;
+    --real: #fb923c;
+    --com-folga: #60a5fa;
 
     --sombra: 0 1px 2px rgb(0 0 0 / 40%);
+    --sombra-elevada: 0 8px 24px rgb(0 0 0 / 45%);
   }
 }
 
@@ -74,39 +103,55 @@ body {
   margin: 0;
   background: var(--fundo);
   color: var(--texto);
-  font: 16px/1.5 var(--fonte);
+  font: 15px/1.55 var(--fonte);
   -webkit-font-smoothing: antialiased;
 }
 
 h1,
 h2,
 h3 {
-  line-height: 1.25;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 h1 {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+  font-size: 1.8rem;
+  letter-spacing: -0.02em;
 }
 
 a {
   color: var(--destaque);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--destaque-forte);
 }
 
 :focus-visible {
-  outline: 2px solid var(--destaque);
+  outline: 2px solid var(--foco);
   outline-offset: 2px;
 }
 
+/* O botão principal no âmbar das placas de obra, com o texto escuro: contraste de sobra. */
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.05rem;
   border: 1px solid transparent;
-  border-radius: 6px;
-  background: var(--destaque);
-  color: #ffffff;
+  border-radius: var(--raio-pequeno);
+  background: var(--acao);
+  color: var(--acao-texto);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--acao-forte);
 }
 
 button:disabled {
@@ -120,10 +165,23 @@ button.secundario {
   color: var(--texto);
 }
 
+button.secundario:hover:not(:disabled) {
+  border-color: var(--texto-suave);
+  background: var(--superficie-2);
+}
+
 input,
 select,
 textarea {
   font: inherit;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: var(--foco);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(245 158 11 / 25%);
 }
 
 table {
@@ -134,7 +192,7 @@ table {
 
 th,
 td {
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
   border-bottom: 1px solid var(--borda);
   text-align: left;
 }
@@ -145,13 +203,61 @@ th {
   font-weight: 600;
 }
 
+thead th {
+  background: var(--superficie-2);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+tbody tr:hover {
+  background: var(--superficie-2);
+}
+
 .numero {
   text-align: right;
   white-space: nowrap;
 }
 
+/*
+ * A régua de um índice de desempenho, embaixo do número: a barra até o
+ * valor, na cor do índice, e o risco do 1,00 — o planejado —, a quatro
+ * quintos dela. Vai no par termo e definição; até onde a barra vai, diz
+ * --preenchido (comum/regua.ts).
+ */
+.regua dd {
+  position: relative;
+  padding-bottom: 0.85rem;
+}
+
+.regua dd::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.15rem;
+  left: 0;
+  height: 5px;
+  border-radius: 3px;
+  background:
+    linear-gradient(currentcolor, currentcolor) 0 0 / var(--preenchido, 0%) 100% no-repeat,
+    var(--borda);
+  content: '';
+}
+
+.regua dd::before {
+  position: absolute;
+  bottom: 0;
+  left: 80%;
+  z-index: 1;
+  width: 2px;
+  height: 9px;
+  border-radius: 1px;
+  background: var(--texto-suave);
+  content: '';
+}
+
 .subtitulo {
-  margin: 0 0 1.5rem;
+  max-width: 60rem;
+  margin: 0 0 1.75rem;
   color: var(--texto-suave);
 }
 

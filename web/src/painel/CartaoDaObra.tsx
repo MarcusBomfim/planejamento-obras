@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import type { Esquemas } from '../api/cliente';
 import { formatarDataEHora, formatarIndice, formatarMes, formatarMoeda } from '../comum/formatacao';
+import { estiloDaRegua } from '../comum/regua';
 import { SeloDaSituacao } from '../comum/SeloDaSituacao';
 import { situacaoDoIndice } from '../comum/situacao';
 import estilos from './CartaoDaObra.module.css';
@@ -14,7 +15,7 @@ export function CartaoDaObra({ obra }: { readonly obra: Esquemas['ObraNoPainelRe
   const variacaoNegativa = obra.variacaoNoTermino !== null && obra.variacaoNoTermino < 0;
 
   return (
-    <article className={estilos.cartao}>
+    <article className={estilos.cartao} data-situacao={obra.situacao}>
       <header className={estilos.cabecalho}>
         <h2>
           <Link to={`/obras/${obra.acompanhamento}`} className={estilos.link}>
@@ -32,13 +33,19 @@ export function CartaoDaObra({ obra }: { readonly obra: Esquemas['ObraNoPainelRe
             Medição {obra.medicao} · {formatarMes(obra.mes)}
           </p>
           <dl className={estilos.indicadores}>
-            <div>
+            <div
+              className={`regua ${estilos.indice ?? ''}`}
+              style={estiloDaRegua(obra.indiceDeDesempenhoDePrazo)}
+            >
               <dt>IDP</dt>
               <dd className={estilos[situacaoDoIndice(obra.indiceDeDesempenhoDePrazo)]}>
                 {formatarIndice(obra.indiceDeDesempenhoDePrazo)}
               </dd>
             </div>
-            <div>
+            <div
+              className={`regua ${estilos.indice ?? ''}`}
+              style={estiloDaRegua(obra.indiceDeDesempenhoDeCusto)}
+            >
               <dt>IDC</dt>
               <dd className={estilos[situacaoDoIndice(obra.indiceDeDesempenhoDeCusto)]}>
                 {formatarIndice(obra.indiceDeDesempenhoDeCusto)}

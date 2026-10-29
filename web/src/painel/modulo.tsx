@@ -3,5 +3,5 @@ import { TelaDoPainel } from './TelaDoPainel';
 
 export const modulo: Modulo = {
   rotas: [{ index: true, element: <TelaDoPainel /> }],
-  menu: { rotulo: 'Painel', caminho: '/', ordem: 1 },
+  menu: { rotulo: 'Painel', caminho: '/', icone: 'painel', ordem: 1 },
 };

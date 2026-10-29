@@ -1,9 +1,16 @@
 .voltar {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.88rem;
 }
 
 .voltar a {
+  color: var(--texto-suave);
+  font-weight: 500;
   text-decoration: none;
+}
+
+.voltar a:hover {
+  color: var(--destaque);
 }
 
 .cabecalho {
@@ -11,6 +18,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   align-items: center;
+  margin-bottom: 0.35rem;
 }
 
 .cabecalho h1 {

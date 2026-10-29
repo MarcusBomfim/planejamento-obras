@@ -1,15 +1,87 @@
-.resumo {
+.cabecalho {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-  margin: 0 0 1.25rem;
-  padding: 0;
+  gap: 0.5rem 2rem;
+  align-items: start;
+  justify-content: space-between;
+}
+
+/* O painel se atualiza sozinho: o ponto verde diz que ele está acompanhando. */
+.aoVivo {
+  display: inline-flex;
+  flex: none;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.4rem 0 1.25rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
   color: var(--texto-suave);
+  font-size: 0.78rem;
+}
+
+.aoVivo::before {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--em-dia);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--em-dia) 20%, transparent);
+  content: '';
+}
+
+/*
+ * As placas da situação: quantas obras em cada uma, com a faixa da cor à
+ * esquerda. Elas dividem a linha toda entre si; no celular, duas por linha.
+ */
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
   list-style: none;
 }
 
+.resumo li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--faixa);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+  color: var(--texto-suave);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
 .resumo strong {
-  color: var(--texto);
+  color: var(--faixa);
+  font-family: var(--fonte-mono);
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.resumo [data-situacao='Critica'] {
+  --faixa: var(--critica);
+}
+
+.resumo [data-situacao='Atencao'] {
+  --faixa: var(--atencao);
+}
+
+.resumo [data-situacao='EmDia'] {
+  --faixa: var(--em-dia);
+}
+
+.resumo [data-situacao='SemMedicao'] {
+  --faixa: var(--sem-medicao);
 }
 
 .obras {
@@ -22,9 +94,10 @@
 }
 
 .vazio {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   border: 1px dashed var(--borda-forte);
   border-radius: var(--raio);
+  background: var(--superficie);
   color: var(--texto-suave);
   text-align: center;
 }

@@ -9,7 +9,7 @@ import estilos from './CurvaS.module.css';
 const Tamanho: Dimensoes = {
   largura: 1100,
   altura: 360,
-  margem: { topo: 16, direita: 24, base: 40, esquerda: 88 },
+  margem: { topo: 16, direita: 44, base: 40, esquerda: 88 },
 };
 
 /**
@@ -66,13 +66,19 @@ export function CurvaS({
         ))}
 
         {medicao && (
-          <line
-            x1={medicao.x}
-            x2={medicao.x}
-            y1={margem.topo}
-            y2={altura - margem.base}
-            className={estilos.medicao}
-          />
+          <g className={estilos.medicao}>
+            <line x1={medicao.x} x2={medicao.x} y1={margem.topo} y2={altura - margem.base} />
+            {/* Perto da borda direita, o rótulo vai antes da linha, para não sair do gráfico. */}
+            {medicao.x > largura - margem.direita - 120 ? (
+              <text x={medicao.x - 8} y={margem.topo + 4} textAnchor="end">
+                última medição
+              </text>
+            ) : (
+              <text x={medicao.x + 8} y={margem.topo + 4}>
+                última medição
+              </text>
+            )}
+          </g>
         )}
 
         {geometria.series.map((serie) => (

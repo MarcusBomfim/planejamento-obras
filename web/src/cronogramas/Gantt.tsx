@@ -36,6 +36,7 @@ export function Gantt({
   const id = useId();
   const gantt = montarGantt(programacao, dependencias, parametros, Tamanho, hoje);
   const seta = `${id}-seta`;
+  const hachura = `${id}-hachura`;
 
   return (
     <figure className={estilos.figura} aria-labelledby={`${id}-legenda`}>
@@ -71,7 +72,20 @@ export function Gantt({
                 />
               </marker>
             ))}
+            {/* O dia não útil hachurado, como numa prancha: fica claro sem esconder o que passa por cima. */}
+            <pattern
+              id={hachura}
+              width="6"
+              height="6"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(45)"
+            >
+              <rect width="6" height="6" className={estilos.hachuraFundo} />
+              <line x1="0" y1="0" x2="0" y2="6" className={estilos.hachura} />
+            </pattern>
           </defs>
+
+          <rect x={0} y={0} width={gantt.largura} height={Tamanho.topo} className={estilos.cabecalho} />
 
           {gantt.linhas.map(
             (linha, indice) =>
@@ -96,7 +110,7 @@ export function Gantt({
                 y={Tamanho.topo}
                 width={Tamanho.larguraDoDia}
                 height={gantt.altura - Tamanho.topo}
-                className={estilos.naoUtil}
+                fill={`url(#${hachura})`}
               />
             ))}
 
@@ -158,10 +172,10 @@ export function Gantt({
               {linha.barra && (
                 <rect
                   x={linha.barra.x + 1}
-                  y={linha.y + 8}
+                  y={linha.y + 7}
                   width={linha.barra.largura - 2}
-                  height={Tamanho.alturaDaLinha - 16}
-                  rx={3}
+                  height={Tamanho.alturaDaLinha - 14}
+                  rx={4}
                   className={linha.critica ? estilos.barraCritica : estilos.barra}
                 >
                   <title>{`${linha.codigo} — ${linha.descricao}`}</title>

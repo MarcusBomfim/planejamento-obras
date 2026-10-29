@@ -1,38 +1,54 @@
 .voltar {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.88rem;
 }
 
 .voltar a {
+  color: var(--texto-suave);
+  font-weight: 500;
   text-decoration: none;
 }
 
+.voltar a:hover {
+  color: var(--destaque);
+}
+
+/* O calendário da programação, como a barra de ferramentas do Gantt. */
 .calendario {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
   align-items: end;
-  margin: 1rem 0 1.25rem;
+  margin: 1.25rem 0;
   padding: 1rem 1.25rem;
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   background: var(--superficie);
+  box-shadow: var(--sombra);
 }
 
 .calendario label {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.3rem;
   color: var(--texto-suave);
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .calendario input[type='date'],
 .calendario input[type='text'] {
-  padding: 0.45rem 0.6rem;
+  height: 2.5rem;
+  padding: 0 0.65rem;
   border: 1px solid var(--borda-forte);
-  border-radius: 6px;
-  background: var(--fundo);
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie-2);
   color: var(--texto);
+  font-family: var(--fonte-mono);
+  font-size: 0.88rem;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .feriados {
@@ -41,18 +57,27 @@
 
 .calendario .sabado {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.45rem;
   align-items: center;
   align-self: center;
   color: var(--texto);
+  font-size: 0.9rem;
   font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.sabado input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--acao-forte);
 }
 
 .ajuda,
 .erro {
   flex-basis: 100%;
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .ajuda {
@@ -63,7 +88,13 @@
   color: var(--critica);
 }
 
+/* O resumo da programação, na faixa âmbar de uma nota de prancha. */
 .resumo {
-  margin: 0 0 1rem;
-  color: var(--texto-suave);
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--acao) 35%, transparent);
+  border-left: 4px solid var(--acao);
+  border-radius: var(--raio-pequeno);
+  background: var(--destaque-fundo);
+  color: var(--texto);
 }

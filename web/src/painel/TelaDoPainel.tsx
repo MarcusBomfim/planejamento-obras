@@ -36,10 +36,16 @@ export function TelaDoPainel() {
 
   return (
     <section aria-labelledby="titulo-do-painel">
-      <h1 id="titulo-do-painel">Painel das obras</h1>
-      <p className="subtitulo">
-        A situação de cada obra na última medição, pelo pior dos índices de desempenho de prazo e de custo.
-      </p>
+      <header className={estilos.cabecalho}>
+        <div>
+          <h1 id="titulo-do-painel">Painel das obras</h1>
+          <p className="subtitulo">
+            A situação de cada obra na última medição, pelo pior dos índices de desempenho de prazo e de
+            custo.
+          </p>
+        </div>
+        <p className={estilos.aoVivo}>Atualiza sozinho a cada {IntervaloDeAtualizacao / 1000} segundos</p>
+      </header>
 
       {painel.isPending && <Carregando rotulo="Carregando o painel" />}
       {painel.isError && <AvisoDeProblema problema={comoProblema(painel.error)} />}
@@ -66,7 +72,7 @@ function Obras({ obras }: { readonly obras: readonly ObraNoPainel[] }) {
 
           return (
             quantas > 0 && (
-              <li key={situacao}>
+              <li key={situacao} data-situacao={situacao}>
                 <strong>{quantas}</strong> {Contagem[situacao][quantas === 1 ? 0 : 1]}
               </li>
             )

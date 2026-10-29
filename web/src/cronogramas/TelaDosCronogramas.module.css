@@ -1,36 +1,98 @@
 .lista {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  max-width: 56rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .lista li {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 0.9rem 1.1rem;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1rem;
   border: 1px solid var(--borda);
   border-radius: var(--raio);
   background: var(--superficie);
+  box-shadow: var(--sombra);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
-.lista a {
+.lista li:hover {
+  border-color: var(--borda-forte);
+  box-shadow: var(--sombra-elevada);
+}
+
+.simbolo {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: var(--raio-pequeno);
+  background: var(--destaque-fundo);
+  color: var(--destaque);
+}
+
+.dados {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.link {
+  color: var(--texto);
   font-weight: 600;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--destaque);
+}
+
+/* A linha inteira clicável, sem que o link leve a linha toda como nome. */
+.link::after {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--raio);
+  content: '';
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible::after {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
 }
 
 .versao {
   color: var(--texto-suave);
-  font-size: 0.85rem;
+  font-family: var(--fonte-mono);
+  font-size: 0.78rem;
+}
+
+.seta {
+  flex: none;
+  color: var(--texto-suave);
+  transition: transform 0.15s;
+}
+
+.lista li:hover .seta {
+  color: var(--destaque);
+  transform: translateX(2px);
 }
 
 .vazio {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   border: 1px dashed var(--borda-forte);
   border-radius: var(--raio);
+  background: var(--superficie);
   color: var(--texto-suave);
   text-align: center;
 }

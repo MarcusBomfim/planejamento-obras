@@ -1,11 +1,15 @@
 import { Link, Navigate, NavLink, Outlet, useLocation } from 'react-router';
+import { Icone } from '../comum/Icone';
+import { iniciais } from '../comum/nomes';
 import { useSessao } from '../sessao/contexto';
 import { entradasDoMenu } from './modulos';
 import estilos from './Moldura.module.css';
 
 /**
- * O que toda tela tem em volta: a marca, o menu das áreas e quem entrou. Sem
- * sessão, manda para a entrada — e volta para cá depois.
+ * O que toda tela tem em volta, num menu escuro à esquerda, como nas
+ * ferramentas de obra: a marca, as áreas — cada uma com o ícone e a palavra
+ * — e, no pé, quem entrou. Sem sessão, manda para a entrada — e volta para
+ * cá depois.
  */
 export function Moldura() {
   const { sessao, sair } = useSessao();
@@ -17,8 +21,11 @@ export function Moldura() {
 
   return (
     <div className={estilos.moldura}>
-      <header className={estilos.topo}>
+      <header className={estilos.lateral}>
         <Link to="/" className={estilos.marca}>
+          <span className={estilos.simbolo}>
+            <Icone nome="marca" />
+          </span>
           Planejamento de Obras
         </Link>
 
@@ -27,6 +34,7 @@ export function Moldura() {
             {entradasDoMenu().map((entrada) => (
               <li key={entrada.caminho}>
                 <NavLink to={entrada.caminho} end={entrada.caminho === '/'}>
+                  {entrada.icone && <Icone nome={entrada.icone} />}
                   {entrada.rotulo}
                 </NavLink>
               </li>
@@ -35,19 +43,19 @@ export function Moldura() {
         </nav>
 
         <div className={estilos.sessao}>
-          <span>
+          <span className={estilos.iniciais} data-iniciais={iniciais(sessao.nome)} aria-hidden="true" />
+          <p className={estilos.quem}>
             <strong>{sessao.nome}</strong>
-            {sessao.papeis.length > 0 && (
-              <span className={estilos.papeis}> · {sessao.papeis.join(', ')}</span>
-            )}
-          </span>
+            {sessao.papeis.length > 0 && <span className={estilos.papeis}>{sessao.papeis.join(', ')}</span>}
+          </p>
           <button
             type="button"
-            className="secundario"
+            className={estilos.sair}
             onClick={() => {
               sair();
             }}
           >
+            <Icone nome="sair" />
             Sair
           </button>
         </div>

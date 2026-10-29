@@ -1,17 +1,42 @@
+/* A faixa no alto do cartão tem a cor da situação, além do selo escrito. */
 .cartao {
   position: relative;
   display: grid;
+  grid-template-rows: auto auto 1fr auto;
   gap: 0.75rem;
   height: 100%;
-  padding: 1.25rem;
+  padding: 1.15rem 1.25rem 1rem;
   border: 1px solid var(--borda);
+  border-top: 3px solid var(--faixa);
   border-radius: var(--raio);
   background: var(--superficie);
   box-shadow: var(--sombra);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.cartao[data-situacao='Critica'] {
+  --faixa: var(--critica);
+}
+
+.cartao[data-situacao='Atencao'] {
+  --faixa: var(--atencao);
+}
+
+.cartao[data-situacao='EmDia'] {
+  --faixa: var(--em-dia);
+}
+
+.cartao[data-situacao='SemMedicao'] {
+  --faixa: var(--sem-medicao);
 }
 
 .cartao:hover {
-  border-color: var(--borda-forte);
+  border-right-color: var(--borda-forte);
+  border-bottom-color: var(--borda-forte);
+  border-left-color: var(--borda-forte);
+  box-shadow: var(--sombra-elevada);
 }
 
 .cabecalho {
@@ -23,7 +48,7 @@
 
 .cabecalho h2 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .link {
@@ -31,10 +56,14 @@
   text-decoration: none;
 }
 
+.link:hover {
+  color: inherit;
+}
+
 /* O cartão inteiro clicável, sem que o link leve o cartão todo como nome. */
 .link::after {
   position: absolute;
-  inset: 0;
+  inset: -3px -1px -1px;
   border-radius: var(--raio);
   content: '';
 }
@@ -44,33 +73,60 @@
 }
 
 .link:focus-visible::after {
-  outline: 2px solid var(--destaque);
+  outline: 2px solid var(--foco);
   outline-offset: 2px;
 }
 
+/* A medição como numa planilha de obra: em caixa alta e na letra dos números. */
 .medicao,
 .semMedicao {
   margin: 0;
   color: var(--texto-suave);
+  font-size: 0.8rem;
+}
+
+.medicao {
+  font-family: var(--fonte-mono);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .indicadores {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem 1rem;
+  gap: 1rem 1.25rem;
+  align-content: start;
   margin: 0;
+}
+
+/* O nome e o valor em duas linhas da grade: o nome que quebra não desalinha o valor do lado. */
+.indicadores > div {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0.1rem;
 }
 
 .indicadores dt {
   color: var(--texto-suave);
-  font-size: 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .indicadores dd {
   margin: 0;
-  font-size: 1.15rem;
-  font-variant-numeric: tabular-nums;
+  font-family: var(--fonte-mono);
+  font-size: 0.95rem;
   font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Os índices, que é o que se olha primeiro, grandes e com a régua embaixo. */
+.indice dd {
+  font-size: 1.6rem;
+  line-height: 1.15;
 }
 
 .EmDia {
@@ -85,9 +141,12 @@
   color: var(--critica);
 }
 
+/* No pé do cartão, mesmo sem medição e sem os índices no meio. */
 .rodape {
   align-self: end;
   margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--borda);
   color: var(--texto-suave);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }

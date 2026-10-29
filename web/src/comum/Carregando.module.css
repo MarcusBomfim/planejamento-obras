@@ -1,3 +1,35 @@
 .carregando {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
   color: var(--texto-suave);
+}
+
+/* A fita zebrada de obra, correndo enquanto a API responde; parada para quem pede menos movimento. */
+.carregando::before {
+  width: 3rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background-image: linear-gradient(
+    -45deg,
+    var(--acao) 25%,
+    var(--lateral) 25% 50%,
+    var(--acao) 50% 75%,
+    var(--lateral) 75%
+  );
+  background-size: 12px 12px;
+  animation: correr 0.6s linear infinite;
+  content: '';
+}
+
+@keyframes correr {
+  to {
+    background-position: 12px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carregando::before {
+    animation: none;
+  }
 }

@@ -1,54 +1,128 @@
+/* A entrada em duas metades: a prancha azul-marinho com o que o sistema faz, e o formulário. */
 .pagina {
   display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   min-height: 100vh;
+}
+
+/* O papel quadriculado de uma prancha de engenharia, no azul-marinho do menu. */
+.vitrine {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem);
+  background-color: var(--lateral);
+  background-image:
+    linear-gradient(rgb(148 163 184 / 9%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 9%) 1px, transparent 1px),
+    linear-gradient(rgb(148 163 184 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 4%) 1px, transparent 1px);
+  background-position: -1px -1px;
+  background-size:
+    96px 96px,
+    96px 96px,
+    24px 24px,
+    24px 24px;
+  color: var(--lateral-texto);
+}
+
+.simbolo {
+  display: grid;
   place-items: center;
-  padding: 1.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--raio);
+  background: var(--acao);
+  color: var(--acao-texto);
+}
+
+.simbolo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.frase {
+  max-width: 30rem;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.pontos {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pontos li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+/* O quadradinho âmbar de cada ponto, como as marcas de uma planta. */
+.pontos li::before {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 1px;
+  background: var(--acao);
+  content: '';
 }
 
 .cartao {
   display: grid;
   gap: 0.75rem;
-  width: min(34rem, 100%);
-  padding: 2rem;
-  border: 1px solid var(--borda);
-  border-radius: var(--raio);
-  background: var(--superficie);
-  box-shadow: var(--sombra);
+  align-content: center;
+  width: min(30rem, 100%);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
 }
 
 .cartao h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .chamada {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   color: var(--texto-suave);
 }
 
 .cartao label {
+  color: var(--texto-suave);
+  font-size: 0.7rem;
   font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
 .cartao textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--borda-forte);
-  border-radius: 6px;
-  background: var(--fundo);
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
   color: var(--texto);
-  font: 0.85rem/1.4 var(--fonte-mono);
+  font: 0.82rem/1.45 var(--fonte-mono);
   resize: vertical;
 }
 
 .cartao button {
-  justify-self: start;
+  padding-block: 0.7rem;
 }
 
 .aviso {
   margin: 0;
   padding: 0.75rem 1rem;
-  border-radius: 6px;
+  border-left: 4px solid var(--atencao);
+  border-radius: var(--raio-pequeno);
   background: var(--atencao-fundo);
   color: var(--atencao);
 }
@@ -59,17 +133,49 @@
 }
 
 .ajuda {
-  margin: 0.5rem 0 0;
+  margin: 0.75rem 0 0;
   color: var(--texto-suave);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
 }
 
 .ajuda code {
   display: block;
-  margin-top: 0.4rem;
-  padding: 0.6rem 0.75rem;
-  border-radius: 6px;
-  background: var(--fundo);
+  margin-top: 0.45rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio-pequeno);
+  background: var(--superficie);
   font-family: var(--fonte-mono);
+  font-size: 0.78rem;
   overflow-wrap: anywhere;
+}
+
+/* Na tela estreita, a prancha vira uma faixa no alto, só com a marca e a frase. */
+@media (width < 56rem) {
+  .pagina {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+
+  .vitrine {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .simbolo {
+    flex: none;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .frase {
+    font-size: 1.05rem;
+  }
+
+  .pontos {
+    display: none;
+  }
 }

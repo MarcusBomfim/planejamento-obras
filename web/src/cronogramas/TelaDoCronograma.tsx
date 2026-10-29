@@ -40,7 +40,7 @@ export function TelaDoCronograma() {
   });
 
   return (
-    <article aria-labelledby="titulo-do-cronograma">
+    <article aria-labelledby="titulo-do-cronograma" data-largura="inteira">
       <p className={estilos.voltar}>
         <Link to="/cronogramas">← Cronogramas</Link>
       </p>

@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
+import { Icone } from '../comum/Icone';
 import { useSessao } from './contexto';
 import { destinoSeguro } from './destino';
 import estilos from './TelaDeEntrada.module.css';
@@ -32,6 +33,18 @@ export function TelaDeEntrada() {
 
   return (
     <main className={estilos.pagina}>
+      <div className={estilos.vitrine}>
+        <span className={estilos.simbolo}>
+          <Icone nome="marca" />
+        </span>
+        <p className={estilos.frase}>Do cronograma à curva S: cada obra medida contra a linha de base.</p>
+        <ul className={estilos.pontos}>
+          <li>O caminho crítico e as datas, calculados pela API</li>
+          <li>Os índices de prazo e de custo a cada medição</li>
+          <li>O painel das obras atualizado em segundo plano</li>
+        </ul>
+      </div>
+
       <form className={estilos.cartao} onSubmit={enviar} aria-labelledby="titulo-entrada">
         <h1 id="titulo-entrada">Planejamento de Obras</h1>
         <p className={estilos.chamada}>Entre com o token de acesso da sua empresa.</p>

@@ -4,9 +4,13 @@ import { comoProblema } from '../api/problemas';
 import { AvisoDeProblema } from '../comum/AvisoDeProblema';
 import { Carregando } from '../comum/Carregando';
 import { formatarDataEHora } from '../comum/formatacao';
+import { Icone } from '../comum/Icone';
 import estilos from './TelaDosCronogramas.module.css';
 
-/** Os cronogramas da empresa, em ordem de nome — cada um leva ao seu Gantt. */
+/**
+ * Os cronogramas da empresa, em ordem de nome — cada um leva ao seu Gantt. A
+ * linha inteira é clicável, mas o link é só o nome, como no painel.
+ */
 export function TelaDosCronogramas() {
   const cronogramas = api.useQuery('get', '/api/cronogramas');
 
@@ -25,10 +29,18 @@ export function TelaDosCronogramas() {
           <ul className={estilos.lista}>
             {cronogramas.data.map((cronograma) => (
               <li key={cronograma.id}>
-                <Link to={`/cronogramas/${cronograma.id}`}>{cronograma.nome}</Link>
-                <span className={estilos.versao}>
-                  versão {cronograma.versao}, de {formatarDataEHora(cronograma.atualizadoEm)}
+                <span className={estilos.simbolo}>
+                  <Icone nome="cronogramas" />
                 </span>
+                <span className={estilos.dados}>
+                  <Link to={`/cronogramas/${cronograma.id}`} className={estilos.link}>
+                    {cronograma.nome}
+                  </Link>
+                  <span className={estilos.versao}>
+                    versão {cronograma.versao}, de {formatarDataEHora(cronograma.atualizadoEm)}
+                  </span>
+                </span>
+                <Icone nome="seta" className={estilos.seta} />
               </li>
             ))}
           </ul>
